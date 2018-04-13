@@ -1,0 +1,363 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/ll_top"
+        android:layout_alignParentTop="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <include layout="@layout/toolbar_layout"/>
+    </LinearLayout>
+
+
+    <ScrollView
+        android:layout_below="@+id/ll_top"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_10dp"
+                android:layout_marginRight="@dimen/margin_10dp"
+                android:layout_marginTop="@dimen/margin_10dp"
+                android:layout_marginBottom="@dimen/margin_4dp"
+                android:elevation="@dimen/margin_5dp"
+                app:cardElevation="5dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="10dp">
+
+                    <RelativeLayout
+                        android:id="@+id/rl_top"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            android:id="@+id/iv_profile"
+                            android:layout_width="@dimen/margin_80dp"
+                            android:layout_height="@dimen/margin_80dp"
+                            android:padding="@dimen/margin_1dp"
+                            android:src="@drawable/ic_person_black_24dp"
+                            android:tint="@color/edit_hint" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="@dimen/margin_5dp"
+                            android:layout_toRightOf="@+id/iv_profile"
+                            android:orientation="vertical">
+
+                            <com.fingertips.helper.TextViewPlus
+                                android:id="@+id/tv_name"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:padding="3dp"
+                                android:text="xxxxxxxxx"
+                                android:textColor="@color/text_primary"
+                                android:textSize="@dimen/txt_size_16sp"
+                                app:customFont="@string/myriad_regular" />
+
+                            <com.fingertips.helper.TextViewPlus
+                                android:id="@+id/tv_email"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:padding="3dp"
+                                android:text="xxxxx@xxxx.xxx"
+                                android:textSize="@dimen/txt_size_14sp"
+                                app:customFont="@string/myriad_light" />
+
+                        </LinearLayout>
+
+                       <!-- <ImageView
+                            android:id="@+id/iv_edit_profile"
+                            android:layout_width="@dimen/margin_30dp"
+                            android:layout_height="@dimen/margin_30dp"
+                            android:layout_marginLeft="@dimen/margin_50dp"
+                            android:layout_marginTop="@dimen/margin_50dp"
+                            android:background="@drawable/camera_button"
+                            android:padding="@dimen/margin_5dp"
+                            android:src="@drawable/ic_camera_black_24dp"
+                            android:tint="@color/white" />-->
+                    </RelativeLayout>
+
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/margin_1dp"
+                        android:layout_marginTop="@dimen/margin_10dp"
+                        android:background="@drawable/dotted"
+                        android:layerType="software" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:gravity="center_vertical"
+                        android:padding="@dimen/margin_5dp">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ic_call"
+                            android:tint="@color/text_primary" />
+
+                        <com.fingertips.helper.TextViewPlus
+                            android:id="@+id/tv_mobile"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/margin_10dp"
+                            android:text="xxxxxxxxxx"
+                            android:textSize="@dimen/txt_size_16sp"
+                            app:customFont="@string/myriad_light" />
+
+                    </LinearLayout>
+
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:gravity="center_vertical"
+                        android:padding="@dimen/margin_5dp">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ic_lock"
+                            android:tint="@color/text_primary" />
+
+                        <com.fingertips.helper.TextViewPlus
+                            android:id="@+id/tv_company_name"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/margin_10dp"
+                            android:text="xxxxx xxxxxxx"
+                            android:textSize="@dimen/txt_size_16sp"
+                            app:customFont="@string/myriad_light" />
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_5dp"
+                        android:gravity="center_vertical"
+                        android:visibility="gone">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ic_location_on_black_24dp"
+                            android:tint="@color/text_primary"/>
+
+                        <com.fingertips.helper.TextViewPlus
+                            android:id="@+id/tv_address"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/margin_10dp"
+                            android:text="xxxx, xxxx"
+                            android:textSize="@dimen/txt_size_18sp"
+                            app:customFont="@string/myriad_light" />
+
+                    </LinearLayout>
+
+
+
+
+
+
+                </LinearLayout>
+
+
+            </android.support.v7.widget.CardView>
+
+
+           <!-- <android.support.v7.widget.CardView
+                android:id="@+id/card_aadhar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin_10dp"
+                android:layout_marginLeft="@dimen/margin_10dp"
+                android:layout_marginRight="@dimen/margin_10dp"
+                android:layout_marginTop="@dimen/margin_10dp"
+                android:elevation="@dimen/margin_5dp"
+                app:cardBackgroundColor="@color/white"
+                app:cardElevation="@dimen/margin_5dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="@dimen/margin_5dp"
+                        android:orientation="horizontal"
+                        android:weightSum="1">
+
+                        <com.cabbazar.partners.helper.TextViewPlus
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="@dimen/margin_5dp"
+                            android:layout_weight="0.1"
+                            android:gravity="center_vertical"
+                            android:text="@string/aadhaar_card"
+                            android:textSize="@dimen/txt_size_16sp"
+                            app:customFont="@string/myriad_regular" />
+
+                        <ImageView
+                            android:id="@+id/iv_aadhaar"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="0.9"
+                            android:padding="@dimen/margin_5dp"
+                            android:src="@drawable/ic_contact_phone_black_24dp"
+                            android:tint="@color/text_primary" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ll_aadhar"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:visibility="gone">
+
+                        <View
+
+                            android:id="@+id/view_aadhar"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginLeft="@dimen/margin_10dp"
+                            android:layout_marginRight="@dimen/margin_10dp"
+                            android:background="@drawable/dotted"
+                            android:layerType="software" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:padding="@dimen/margin_5dp">
+
+                            <com.cabbazar.partners.helper.TextViewPlus
+                                android:id="@+id/tv_aadhar"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:padding="@dimen/margin_10dp"
+                                android:text="Aadhaar Card"
+                                android:textSize="@dimen/txt_size_14sp"
+                                app:customFont="@string/myriad_light" />
+
+
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+            </android.support.v7.widget.CardView>-->
+
+
+           <!-- <android.support.v7.widget.CardView
+                android:id="@+id/card_gst"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:elevation="@dimen/margin_5dp"
+                android:visibility="gone"
+                app:cardBackgroundColor="@color/white"
+                app:cardElevation="@dimen/margin_5dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="@dimen/margin_5dp"
+                        android:orientation="horizontal"
+                        android:weightSum="1">
+
+                        <com.cabbazar.partners.helper.TextViewPlus
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="@dimen/margin_5dp"
+                            android:layout_weight="0.1"
+                            android:gravity="center_vertical"
+                            android:text="@string/gst_certificate"
+                            android:textSize="@dimen/txt_size_16sp"
+                            app:customFont="@string/myriad_regular" />
+
+                        <ImageView
+                            android:id="@+id/iv_gst"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="0.9"
+                            android:padding="@dimen/margin_5dp"
+                            android:src="@drawable/ic_book_black_24dp"
+                            android:tint="@color/text_primary" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ll_gst"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:visibility="gone">
+
+                        <View
+                            android:id="@+id/view_gst"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginLeft="@dimen/margin_10dp"
+                            android:layout_marginRight="@dimen/margin_10dp"
+                            android:background="@drawable/dotted"
+                            android:layerType="software" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:padding="@dimen/margin_5dp">
+
+                            <com.cabbazar.partners.helper.TextViewPlus
+                                android:id="@+id/tv_gst"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:padding="@dimen/margin_10dp"
+                                android:text="Gst Certificate"
+                                android:textSize="@dimen/txt_size_14sp"
+                                app:customFont="@string/myriad_light" />
+
+
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+            </android.support.v7.widget.CardView>-->
+
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+    <include layout="@layout/loader_layout"/>
+
+</RelativeLayout>

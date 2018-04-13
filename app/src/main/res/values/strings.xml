@@ -1,0 +1,50 @@
+<resources>
+    <string name="app_name">FingerTips</string>
+
+    <string name="enable_gps">Please Enable Your GPS Location</string>
+    <string name="network_error">Unable to connect to the server</string>
+
+
+    <!--Shared Preference Token Value-->
+    <string name="auth_token">auth_token</string>
+    <string name="auth_email">Auth_email</string>
+    <string name="auth_name">Auth_name</string>
+    <string name="auth_number">Auth_number</string>
+    <string name="auth_id">Auth_id</string>
+
+
+    <!--Fonts-->
+    <string name="myriad_regular">myriad_regular.ttf</string>
+    <string name="myriad_light">myriad_light.ttf</string>
+    <string name="latina_text">latina_text.ttf</string>
+
+    <!--Get Started Screen-->
+    <string name="sign_in">SIGN IN</string>
+    <string name="register">Register</string>
+    <string name="cancel">Cancel</string>
+    <string name="back">Back</string>
+    <string name="going_somewhere">Going Somewhere?</string>
+    <string name="no_contact">No contact added</string>
+    <string name="already_have_account">Already Have Account?</string>
+    <string name="signup_text">
+       Don\'t have an account yet?
+    </string>
+    <string name="rupees_symbol">₹</string>
+    <string name="btn_call_driver">Call Driver</string>
+    <string name="ride_cancel">Cancel Ride</string>
+
+
+    <string-array name="item_list">
+        <item>Item 1</item>
+        <item>Item 2</item>
+        <item>Item 3</item>
+        <item>Item 4</item>
+    </string-array>
+    <string name="title_activity_main2">Main2Activity</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+
+</resources>

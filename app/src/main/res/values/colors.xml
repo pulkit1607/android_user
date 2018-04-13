@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#E5791A</color>
+    <color name="black">#000000</color>
+    <color name="white">#ffffff</color>
+    <color name="edit_hint">#44000000</color>
+    <color name="edit_primary">#000000</color>
+    <color name="success">#00C853</color>
+    <color name="dialog_color">#99000000</color>
+
+
+    <color name="splash_text">#9D8891</color>
+    <color name="danger">#EB0C14</color>
+
+
+    <color name="text_icon">#FFFFFF</color>
+    <color name="text_primary">#212121</color>
+    <color name="text_secondary">#757575</color>
+    <color name="divider">#BDBDBD</color>
+
+
+    <color name="gray_50">#FAFAFA</color>
+    <color name="gray_100">#F5F5F5</color>
+    <color name="gray_200">#EEEEEE</color>
+    <color name="gray_300">#E0E0E0</color>
+    <color name="gray_400">#9E9E9E</color>
+    <color name="gray_500">#9E9E9E</color>
+    <color name="gray_600">#757575</color>
+    <color name="gray_700">#616161</color>
+    <color name="gray_800">#424242</color>
+
+
+    <!--Login Screen-->
+    <color name="login_input_text">#001929</color>
+    <color name="login_input_hint">#B8B8B8</color>
+    <color name="transparent">#00000000</color>
+
+    <color name="mdtp_accent_color">#009688</color>
+    <color name="mdtp_accent_color_dark">#00796b</color>
+
+
+    <!--Input-->
+    <color name="input_ico">#88000000</color>
+    <color name="input_textbox">#33000000</color>
+
+    <!--LoginPage-->
+    <color name="login_button">#ec6433</color>
+    <color name="login_background">#3d696b</color>
+    <color name="login_divider">#dbdbdb</color>
+
+    <color name="pigment_green">#009A48</color>
+    <color name="truck_marker">#005AB4</color>
+</resources>
