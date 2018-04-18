@@ -1,5 +1,6 @@
 package com.fingertips.activity;
 
+import android.Manifest;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -33,6 +34,8 @@ import android.widget.LinearLayout;
 import com.fingertips.R;
 import com.fingertips.app.Constants;
 import com.fingertips.fragment.HomeFragment;
+import com.fingertips.fragment.MenuFragment;
+import com.fingertips.fragment.RestaurantFragment;
 import com.fingertips.helper.XClass;
 import com.fingertips.util.AppSingleton;
 import com.google.android.gms.common.ConnectionResult;
@@ -41,7 +44,7 @@ import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.location.LocationServices;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener,GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener,LocationListener {
+        implements NavigationView.OnNavigationItemSelectedListener, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, LocationListener {
 
     private LocationManager locationManager;
     private GoogleApiClient mGoogleApiClient;
@@ -51,7 +54,7 @@ public class MainActivity extends AppCompatActivity
     private XClass obj;
     private String currentFragment;
     private static final int PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 2;
-    int count=1;
+    int count = 1;
     private LinearLayout llProgress;
     private ImageView ivMenu;
 
@@ -62,8 +65,8 @@ public class MainActivity extends AppCompatActivity
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        llProgress = (LinearLayout)findViewById(R.id.ll_progress);
-        ivMenu = (ImageView)findViewById(R.id.iv_menu);
+        llProgress = (LinearLayout) findViewById(R.id.ll_progress);
+        ivMenu = (ImageView) findViewById(R.id.iv_menu);
 
         final DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ivMenu.setOnClickListener(new View.OnClickListener() {
@@ -88,15 +91,26 @@ public class MainActivity extends AppCompatActivity
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            super.onBackPressed();
+            if (currentFragment.equalsIgnoreCase(Constants.FragmentTag.homeFragment)) {
+                super.onBackPressed();
+            } else if (currentFragment.equalsIgnoreCase(Constants.FragmentTag.menuFragment)) {
+                setFragment(Constants.FragmentTag.restaurantFragment, null);
+            } else {
+                count = 0;
+                if(mGoogleApiClient!=null) {
+                    mGoogleApiClient.connect();
+                }
+                setHomeFragment();
+
+            }
         }
     }
 
-    public void showLoader(){
+    public void showLoader() {
         llProgress.setVisibility(View.VISIBLE);
     }
 
-    public void hideLoader(){
+    public void hideLoader() {
         llProgress.setVisibility(View.GONE);
     }
 
@@ -108,10 +122,10 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_profile) {
-            intent.putExtra(Constants.WHICH,Constants.Navigation.PROFILE);
+            intent.putExtra(Constants.WHICH, Constants.Navigation.PROFILE);
             startActivity(intent);
-        }else if (id == R.id.nav_order) {
-            intent.putExtra(Constants.WHICH,Constants.Navigation.ORDER);
+        } else if (id == R.id.nav_order) {
+            intent.putExtra(Constants.WHICH, Constants.Navigation.ORDER);
             startActivity(intent);
         }
 
@@ -120,21 +134,31 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
-    public void setFragment(String fragment,Bundle bundle) {
+    public void setFragment(String fragment, Bundle bundle) {
         currentFragment = fragment;
         FragmentTransaction localFragmentTransaction = getSupportFragmentManager().beginTransaction();
-        if(fragment.equalsIgnoreCase(Constants.FragmentTag.homeFragment)){
+        if (fragment.equalsIgnoreCase(Constants.FragmentTag.homeFragment)) {
             HomeFragment mainFragment = new HomeFragment();
             mainFragment.setArguments(bundle);
             localFragmentTransaction.replace(R.id.container, mainFragment, Constants.FragmentTag.homeFragment);
             localFragmentTransaction.commit();
-            if(mGoogleApiClient.isConnected()){
+            if (mGoogleApiClient.isConnected()) {
                 mGoogleApiClient.disconnect();
             }
 
-        }else if(fragment.equalsIgnoreCase(Constants.FragmentTag.homeFragment)){
+        } else if (fragment.equalsIgnoreCase(Constants.FragmentTag.restaurantFragment)) {
+            RestaurantFragment restaurantFragment = new RestaurantFragment();
+            restaurantFragment.setArguments(bundle);
+            localFragmentTransaction.replace(R.id.container, restaurantFragment, Constants.FragmentTag.restaurantFragment);
+            localFragmentTransaction.commit();
 
+        }else if (fragment.equalsIgnoreCase(Constants.FragmentTag.menuFragment)) {
+            MenuFragment menuFragment = new MenuFragment();
+            menuFragment.setArguments(bundle);
+            localFragmentTransaction.replace(R.id.container, menuFragment, Constants.FragmentTag.menuFragment);
+            localFragmentTransaction.commit();
         }
+
     }
 
     void checkGps() {
@@ -164,7 +188,7 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
-    public void getLocation(){
+    public void getLocation() {
         locationManager = (LocationManager) MainActivity.this.getSystemService(Context.LOCATION_SERVICE);
         // Create an instance of GoogleAPIClient.
         if (mGoogleApiClient == null) {
@@ -204,18 +228,25 @@ public class MainActivity extends AppCompatActivity
 
             return;
         }
-        if(count==1) {
-            mLastLocation = LocationServices.FusedLocationApi.getLastLocation(mGoogleApiClient);
-            if (mLastLocation != null) {
-                current_latitude = mLastLocation.getLatitude();
-                current_longitude = mLastLocation.getLongitude();
-                Log.e("LatLong", String.valueOf(mLastLocation.getLongitude()) + "     ," + String.valueOf(mLastLocation.getLatitude()));
-                Bundle locationBundle = new Bundle();
-                locationBundle.putDouble(Constants.Extras.LATITUDE, current_latitude);
-                locationBundle.putDouble(Constants.Extras.LONGITUDE, current_longitude);
-                setFragment(Constants.FragmentTag.homeFragment, locationBundle);
-                count++;
-            }
+        if (count == 1) {
+            setHomeFragment();
+        }
+    }
+
+    private void setHomeFragment() {
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            return;
+        }
+        mLastLocation = LocationServices.FusedLocationApi.getLastLocation(mGoogleApiClient);
+        if (mLastLocation != null) {
+            current_latitude = mLastLocation.getLatitude();
+            current_longitude = mLastLocation.getLongitude();
+            Log.e("LatLong", String.valueOf(mLastLocation.getLongitude()) + "     ," + String.valueOf(mLastLocation.getLatitude()));
+            Bundle locationBundle = new Bundle();
+            locationBundle.putDouble(Constants.Extras.LATITUDE, current_latitude);
+            locationBundle.putDouble(Constants.Extras.LONGITUDE, current_longitude);
+            setFragment(Constants.FragmentTag.homeFragment, locationBundle);
+            count++;
         }
     }
 
@@ -253,4 +284,5 @@ public class MainActivity extends AppCompatActivity
         }
 
     }
+
 }

@@ -19,6 +19,7 @@ import com.fingertips.activity.PlacesAutoCompleteActivity;
 import com.fingertips.adapter.ItemAdapter;
 import com.fingertips.app.Constants;
 import com.fingertips.helper.TextViewPlus;
+import com.fingertips.helper.XClass;
 import com.fingertips.interfaces.IOkHttpNotify;
 import com.fingertips.model.CategoryModel;
 import com.fingertips.okhttp.OKHttpAPICalls;
@@ -151,6 +152,9 @@ public class HomeFragment extends Fragment implements ItemAdapter.ItemClickInter
             data.put("lat",latUserPickup);
             data.put("lng",lngUserPickup);
             data.put("categoryId",model.getId());
+            XClass obj = new XClass(mActivity);
+            obj.saveInSharedPref(R.string.auth_json,"string",data.toString());
+            mActivity.setFragment(Constants.FragmentTag.restaurantFragment,null);
             Log.e("datat value", data.toString());
         } catch (JSONException e) {
             e.printStackTrace();

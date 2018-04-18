@@ -108,6 +108,10 @@ public class OKHttpAPICalls {
                 mUrl = Constants.Url.GET_ORDERS_URL;
                 doOkHttpGetWithToken(requestType, mUrl);
                 break;
+            case Constants.RequestTag.GET_HOTELS:
+                mUrl = Constants.Url.GET_HOTELS_URL+"/1/?lat=28.500981&long=77.0785523";
+                doOkHttpGetWithToken(requestType, mUrl);
+                break;
 
 
         }

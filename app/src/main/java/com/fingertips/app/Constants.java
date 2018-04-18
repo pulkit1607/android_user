@@ -53,7 +53,7 @@ public class Constants {
     public class FragmentTag{
         public static final String homeFragment = "homeFragment";
         public static final String restaurantFragment  = "restaurantFragment";
-
+        public static final String menuFragment  = "menuFragment";
     }
 
     public static boolean isValidMobileNo(String number) {
@@ -89,7 +89,8 @@ public class Constants {
         public static final String CATEGORY_LIST = "categoryList";
         public static final String GET_PROFILE = "profileData";
         public static final String GET_ORDERS = "getOrders";
-
+        public static final String GET_HOTELS = "getHotels";
+        public static final String GET_MENU = "getMenu";
 
     }
 
@@ -101,6 +102,8 @@ public class Constants {
         public static final String CATEGORY_LIST_URL = BASE_URL + "categorys/";
         public static final String GET_PROFILE_URL = BASE_URL + "v1/orders/";
         public static final String GET_ORDERS_URL = BASE_URL + "v1/user/details/";
+        public static final String GET_HOTELS_URL = BASE_URL + "results/";
+        public static final String GET_MENU_URL = BASE_URL + "hotel/";
 
 
     }

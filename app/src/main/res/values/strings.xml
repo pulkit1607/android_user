@@ -11,6 +11,8 @@
     <string name="auth_name">Auth_name</string>
     <string name="auth_number">Auth_number</string>
     <string name="auth_id">Auth_id</string>
+    <string name="auth_json">Auth_Json</string>
+    <string name="auth_hotel_id">Auth_Hotel_Id</string>
 
 
     <!--Fonts-->
